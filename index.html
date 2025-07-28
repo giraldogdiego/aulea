@@ -1,152 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Aulea</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
-
-    /* overall page */
-    body {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      font-family: 'Comic Neue', cursive;
-      background: linear-gradient(135deg, #FDEB71 0%, #F8D800 100%);
-    }
-
-    /* header with language switch */
-    #header {
-      padding: 8px 16px;
-      background: #FFA726;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    #lang-select {
-      border: none;
-      background: #FFF;
-      padding: 4px 8px;
-      border-radius: 8px;
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    /* chat window */
-    #chat-window {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-      background: #FFF8E1;
-    }
-    .message {
-      max-width: 70%;
-      margin-bottom: 12px;
-      padding: 12px 16px;
-      border-radius: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      line-height: 1.4;
-      word-wrap: break-word;
-      clear: both;
-    }
-    .message.user {
-      background: linear-gradient(135deg, #42A5F5 0%, #478ED1 100%);
-      color: #fff;
-      float: right;
-      border-bottom-right-radius: 4px;
-      animation: pop 0.3s ease-out;
-    }
-    .message.ai {
-      background: linear-gradient(135deg, #FFEE58 0%, #FFF176 100%);
-      color: #333;
-      float: left;
-      border-bottom-left-radius: 4px;
-      animation: pop 0.3s ease-out;
-    }
-
-    @keyframes pop {
-      from { transform: scale(0.9); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
-    }
-
-    /* preset questions */
-    #preset-questions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 10px;
-      background: #FFF;
-      border-top: 1px solid #FFD54F;
-    }
-    .preset-btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 20px;
-      background: #FFB300;
-      color: #fff;
-      font-family: inherit;
-      cursor: pointer;
-      transition: transform 0.1s, background 0.2s;
-    }
-    .preset-btn:hover {
-      background: #FFA000;
-      transform: translateY(-2px);
-    }
-
-    /* input area */
-    #input-area {
-      display: flex;
-      padding: 10px;
-      background: #FFF;
-      border-top: 1px solid #FFD54F;
-    }
-    #user-input {
-      flex: 1;
-      padding: 12px 16px;
-      border-radius: 24px;
-      border: 2px solid #FFD54F;
-      outline: none;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: border-color 0.2s;
-    }
-    #user-input:focus {
-      border-color: #FFA000;
-    }
-    #send-btn {
-      margin-left: 8px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #66BB6A 0%, #43A047 100%);
-      color: #fff;
-      font-family: inherit;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.1s, background 0.2s;
-    }
-    #send-btn:hover {
-      background: linear-gradient(135deg, #57A05C 0%, #388E3C 100%);
-      transform: translateY(-2px);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulea Tutor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="header">
-    <select id="lang-select"></select>
-  </div>
-
-  <div id="chat-window"></div>
-
-  <div id="preset-questions"></div>
-
-  <div id="input-area">
-    <input id="user-input" />
-    <button id="send-btn"></button>
-  </div>
-
-  <script src="renderer.js"></script>
+    <div id="app-container">
+        <header id="app-header">
+            <div class="logo">
+                <img src="./assets/icon.png" alt="Aulea Logo" width="40" height="40">
+                <h1>Aulea</h1>
+            </div>
+            <div class="controls">
+                <select id="lang-select"></select>
+            </div>
+        </header>
+        <main id="chat-window"></main>
+        <div id="preset-questions"></div>
+        <footer id="input-area">
+            <input type="text" id="user-input" autocomplete="off">
+            <button id="send-btn"></button>
+        </footer>
+    </div>
+    <script src="./renderer.js"></script>
 </body>
 </html>
