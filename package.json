@@ -1,15 +1,46 @@
 {
   "name": "aulea",
   "version": "1.0.0",
+  "description": "An AI-Powered Tutoring Tool for Low-Resource Educational Settings",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win --x64"
   },
   "keywords": [],
-  "author": "",
+  "author": "Diego Giraldo",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "electron": "^37.1.0"
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.diegogiraldo.aulea",
+    "productName": "Aulea",
+    "files": [
+      "**/*",
+      "!dist/",
+      "!.gitignore",
+      "!README.md"
+    ],
+    "extraResources": [
+      {
+        "from": "llama",
+        "to": "llama"
+      }
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/release-icon.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/release-icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }

@@ -6,6 +6,12 @@ const { spawn } = require('child_process');
 let mainWindow;
 let conversationHistory = [];
 
+const isDev = process.env.NODE_ENV !== 'production';
+const resourcesPath = isDev ? __dirname : process.resourcesPath;
+
+const llamaExecPath = path.join(resourcesPath, 'llama', 'llama');
+const modelPath = path.join(resourcesPath, 'llama', 'models', 'llama-2-7b-chat.Q4_K_M.gguf');
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
@@ -27,6 +33,13 @@ ipcMain.handle('clear-history', () => {
 });
 
 ipcMain.handle('run-llm', async (event, prompt, lang) => {
+  if (!fs.existsSync(llamaExecPath)) {
+    return "Error: llama executable not found. The application may be corrupted.";
+  }
+  if (!fs.existsSync(modelPath)) {
+    return "Error: Model file not found. The model was not bundled correctly.";
+  }
+
   conversationHistory.push({ role: 'user', content: prompt });
 
   const systemMessage = lang === 'es'
@@ -43,24 +56,17 @@ ipcMain.handle('run-llm', async (event, prompt, lang) => {
   const wrappedPrompt = `${systemMessage}${formattedHistory}`;
 
   return new Promise((resolve, reject) => {
-    const execPath = path.join(__dirname, 'llama', 'llama');
-    const modelPath = path.join(__dirname, 'llama', 'models', 'llama-2-7b-chat.Q4_K_M.gguf');
     const args = [
       '-m', modelPath, '-p', wrappedPrompt, '-n', '512',
       '--temp', '0.1', '--top_p', '0.9', '--repeat_penalty', '1.15',
       '-c', '1024', '-t', '4'
     ];
 
-    const llamaProcess = spawn(execPath, args);
+    const llamaProcess = spawn(llamaExecPath, args);
     let fullOutput = '';
 
-    llamaProcess.stdout.on('data', data => {
-      fullOutput += data.toString();
-    });
-
-    llamaProcess.stderr.on('data', data => {
-      console.error(`llama.cpp stderr: ${data}`);
-    });
+    llamaProcess.stdout.on('data', data => { fullOutput += data.toString(); });
+    llamaProcess.stderr.on('data', data => { console.error(`llama.cpp stderr: ${data}`); });
 
     llamaProcess.on('close', code => {
       if (code === 0) {
@@ -75,22 +81,11 @@ ipcMain.handle('run-llm', async (event, prompt, lang) => {
         reject(new Error(`llama exited with code ${code}`));
       }
     });
-
-    llamaProcess.on('error', err => {
-      reject(err);
-    });
+    llamaProcess.on('error', err => { reject(err); });
   });
 });
 
-app.whenReady().then(() => {
-    if (process.platform === 'darwin') {
-        const iconPath = path.join(__dirname, 'assets', 'icon.png');
-        if (fs.existsSync(iconPath)) {
-            app.dock.setIcon(iconPath);
-        }
-    }
-    createWindow();
-});
+app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
