@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-en="Aulea - AI Tutoring for All" data-lang-es="Aulea - Tutoría con IA para Todos"></title>
+    
+    <meta name="description" content="Aulea is a free, offline AI-powered tutor designed to bridge the educational gap in underserved communities.">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/icon.png" alt="Aulea Logo">
+                Aulea
+            </a>
+            <nav class="main-nav">
+                <a href="#features" data-lang-en="Features" data-lang-es="Características"></a>
+                <a href="#download" data-lang-en="Download" data-lang-es="Descargar"></a>
+                <a href="#feedback" data-lang-en="Feedback" data-lang-es="Feedback"></a>
+            </nav>
+            <div class="controls">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 data-lang-en="Learning, unlocked. <br>Anywhere, anytime." data-lang-es="Aprendizaje sin límites. <br>Donde sea, cuando sea."></h1>
+                    <p data-lang-en="Aulea is a free, offline AI tutor that empowers students in low-resource communities. No internet connection required." data-lang-es="Aulea es un tutor de IA gratuito y offline que empodera a estudiantes en comunidades con recursos limitados. No se requiere conexión a internet."></p>
+                    <a href="#download" class="btn btn-primary" data-lang-en="Get Aulea Now" data-lang-es="Obtén Aulea Ahora"></a>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/aulea-hero-image.png" alt="Aulea application running on a laptop">
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-lang-en="Designed for Impact" data-lang-es="Diseñado para Impactar"></h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-number">01</div>
+                        <h3 data-lang-en="100% Offline" data-lang-es="100% Offline"></h3>
+                        <p data-lang-en="Aulea runs entirely on the user's computer, ensuring access equity regardless of internet availability." data-lang-es="Aulea se ejecuta completamente en el computador del usuario, garantizando acceso equitativo sin importar la disponibilidad de internet."></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">02</div>
+                        <h3 data-lang-en="AI-Powered Tutoring" data-lang-es="Tutoría con IA"></h3>
+                        <p data-lang-en="Answers questions on science and reading, providing clear, concise explanations to reinforce learning." data-lang-es="Responde preguntas de ciencia y lectura, proporcionando explicaciones claras y concisas para reforzar el aprendizaje."></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-number">03</div>
+                        <h3 data-lang-en="Bilingual & Relevant" data-lang-es="Bilingüe y Relevante"></h3>
+                        <p data-lang-en="Full support for English and Spanish, using content packs aligned with local curricula like Colombia's." data-lang-es="Soporte completo en inglés y español, usando paquetes de contenido alineados a currículos locales como el de Colombia."></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download-section">
+            <div class="container">
+                 <div class="section-title">
+                    <h2 data-lang-en="Get Started for Free" data-lang-es="Comienza Gratis"></h2>
+                    <p data-lang-en="Aulea is open-source and will always be free. Download the version for your operating system." data-lang-es="Aulea es de código abierto y siempre será gratuito. Descarga la versión para tu sistema operativo."></p>
+                </div>
+                <div class="download-options">
+                    <a href="#" class="download-card">
+                        <strong>Windows</strong>
+                        <span data-lang-en="Download .exe" data-lang-es="Descargar .exe"></span>
+                    </a>
+                    <a href="#" class="download-card">
+                        <strong>macOS</strong>
+                        <span data-lang-en="Download .dmg" data-lang-es="Descargar .dmg"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="feedback" class="feedback-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2 data-lang-en="Help Us Improve" data-lang-es="Ayúdanos a Mejorar"></h2>
+                    <p data-lang-en="Your feedback is vital. Suggest new content, report a bug, or just share your ideas." data-lang-es="Tu feedback es vital. Sugiere nuevo contenido, reporta un error o simplemente comparte tus ideas."></p>
+                </div>
+                <form id="feedback-form">
+                    <div class="form-row">
+                        <input type="text" id="name" data-lang-placeholder-en="Your Name" data-lang-placeholder-es="Tu Nombre" required>
+                        <select id="feedback-type" required>
+                            </select>
+                    </div>
+                    <input type="text" id="user-email" data-lang-placeholder-en="Your Email" data-lang-placeholder-es="Tu Email" required>
+                    <textarea id="message" rows="6" data-lang-placeholder-en="Your message..." data-lang-placeholder-es="Tu mensaje..." required></textarea>
+                    <button type="submit" class="btn btn-primary" data-lang-en="Send Feedback via Email" data-lang-es="Enviar Feedback por Email"></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p data-lang-en="Aulea Project by Diego Giraldo. An open-source initiative to close the digital divide in education." data-lang-es="Proyecto Aulea por Diego Giraldo. Una iniciativa de código abierto para cerrar la brecha digital en la educación."></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
